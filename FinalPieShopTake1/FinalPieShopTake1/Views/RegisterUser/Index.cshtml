@@ -1,0 +1,71 @@
+﻿@model FinalPieShopTake1.Models.RegisterUser
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Save", "RegisterUser"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FName)
+
+        @Html.TextBoxFor(m => m.FName, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LName)
+
+        @Html.TextBoxFor(m => m.LName, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+
+        @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ZipCode)
+
+        @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
+
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.City)
+
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State)
+
+        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNo)
+
+        @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+ }
+
