@@ -12,8 +12,9 @@ html {
 
 body {
     margin: 0;
-    /*background-color: #e6e4d9;*/
-    background-image: url('../images/pattern.png');
+   /* background-color: #e6e4d9;*/
+    background-image: url('../images/background3.png');
+   
 }
 
 article,
@@ -5702,7 +5703,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 
 .navbar-inverse {
-    background-color: violet;
+    background-color:mediumspringgreen;
     border-color: white;
 }
 
@@ -6146,25 +6147,26 @@ a.badge:focus {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
-    color: inherit;
-    background-color: #eeeeee;
+    color:inherit;
+    background-color:none;
 }
 
     .jumbotron h1,
     .jumbotron .h1 {
-        color: inherit;
+        color:inherit;
+        font-size:12px;
     }
 
     .jumbotron p {
         margin-bottom: 15px;
-        font-size: 21px;
+        font-size: 11px;
         font-weight: 200;
     }
 
     .jumbotron > hr {
         border-top-color: #d5d5d5;
     }
-
+    
 .container .jumbotron,
 .container-fluid .jumbotron {
     padding-right: 15px;
@@ -6190,7 +6192,7 @@ a.badge:focus {
 
     .jumbotron h1,
     .jumbotron .h1 {
-        font-size: 63px;
+        font-size:20px;
     }
 }
 

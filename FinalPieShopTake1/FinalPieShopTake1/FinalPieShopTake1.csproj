@@ -49,12 +49,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -167,14 +176,21 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddToCartController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Api\CategoryApiController.cs" />
+    <Compile Include="Controllers\Api\CategoryDDApiController.cs" />
+    <Compile Include="Controllers\Api\PieApiController.cs" />
+    <Compile Include="Controllers\Api\RegisterApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="Migrations\202008281136590_Initial Migration.cs" />
     <Compile Include="Migrations\202008281136590_Initial Migration.Designer.cs">
       <DependentUpon>202008281136590_Initial Migration.cs</DependentUpon>
@@ -183,16 +199,42 @@
     <Compile Include="Migrations\202008281353382_Forign key relation of pie.Designer.cs">
       <DependentUpon>202008281353382_Forign key relation of pie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008301054241_Validation in RegisterUser.cs" />
+    <Compile Include="Migrations\202008301054241_Validation in RegisterUser.Designer.cs">
+      <DependentUpon>202008301054241_Validation in RegisterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008301204549_Add Admin.cs" />
+    <Compile Include="Migrations\202008301204549_Add Admin.Designer.cs">
+      <DependentUpon>202008301204549_Add Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008311752098_Add address validation.cs" />
+    <Compile Include="Migrations\202008311752098_Add address validation.Designer.cs">
+      <DependentUpon>202008311752098_Add address validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031841375_Update Register and pies table.cs" />
+    <Compile Include="Migrations\202009031841375_Update Register and pies table.Designer.cs">
+      <DependentUpon>202009031841375_Update Register and pies table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009160416337_add IsEmailVerified And activation code.cs" />
+    <Compile Include="Migrations\202009160416337_add IsEmailVerified And activation code.Designer.cs">
+      <DependentUpon>202009160416337_add IsEmailVerified And activation code.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PieCategory.cs" />
+    <Compile Include="Models\PieReview.cs" />
     <Compile Include="Models\Pies.cs" />
     <Compile Include="Models\RegisterUser.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\NewPieViewModel.cs" />
+    <Compile Include="ViewModel\PieReviewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -203,17 +245,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\architecture-and-city.svg" />
+    <Content Include="images\background2.jpeg" />
+    <Content Include="images\background3.png" />
     <Content Include="images\bethany-fullsize.jpg" />
     <Content Include="images\bethany.jpg" />
     <Content Include="images\bethanylogo.png" />
     <Content Include="images\bethanysmall.jpg" />
     <Content Include="images\cake.svg" />
+    <Content Include="images\cakes.jpg.jpg" />
+    <Content Include="images\calendar.svg" />
+    <Content Include="images\dessert.svg" />
+    <Content Include="images\fast-food.svg" />
+    <Content Include="images\gmail.svg" />
+    <Content Include="images\google-hangouts.svg" />
+    <Content Include="images\location.svg" />
+    <Content Include="images\pieicon.jpg" />
+    <Content Include="images\products\backgroundtemp.jpeg" />
     <Content Include="images\favicon.png" />
-    <Content Include="images\Home.png" />
-    <Content Include="images\pattern.png" />
+    <Content Include="images\Geethika.jpeg" />
+    <Content Include="images\Monishankar.jpeg" />
+    <Content Include="images\pasterries.jpg" />
     <Content Include="images\pie.png" />
-    <Content Include="images\PieIcon.png" />
-    <Content Include="images\products\applepie.jpg" />
+    <Content Include="images\piecolor.jpeg" />
     <Content Include="images\products\applepiesmall.jpg" />
     <Content Include="images\products\blueberrycheesecakesmall.jpg" />
     <Content Include="images\products\cheesecake.jpg" />
@@ -222,11 +276,22 @@
     <Content Include="images\products\cherrypiesmall.jpg" />
     <Content Include="images\products\christmasapplepiesmall.jpg" />
     <Content Include="images\products\cranberrypiesmall.jpg" />
+    <Content Include="images\products\flower.jpeg" />
+    <Content Include="images\products\galaxy.jpeg" />
+    <Content Include="images\products\letter.jpeg" />
     <Content Include="images\products\peachpiesmall.jpg" />
     <Content Include="images\products\pumpkinpiesmall.jpg" />
     <Content Include="images\products\rhubarbpiesmall.jpg" />
     <Content Include="images\products\strawberrycheesecakesmall.jpg" />
     <Content Include="images\products\strawberrypiesmall.jpg" />
+    <Content Include="images\sad.svg" />
+    <Content Include="images\sale.svg" />
+    <Content Include="images\shopping-bag.svg" />
+    <Content Include="images\shopping-cart.svg" />
+    <Content Include="images\Shreya.jpeg" />
+    <Content Include="images\SmritiProject.jpeg" />
+    <Content Include="images\Subhojit.jpg" />
+    <Content Include="images\sweet.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -278,10 +343,32 @@
     <Content Include="Views\RegisterUser\Login.cshtml" />
     <Content Include="Views\RegisterUser\ViewUser.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Admin\AllPie.cshtml" />
+    <Content Include="Views\Admin\AllCategory.cshtml" />
+    <Content Include="Views\Admin\AddPie.cshtml" />
+    <Content Include="Views\Admin\AddPieCategory.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_loginPartialOwn.cshtml" />
+    <Content Include="Views\Shared\_loginPartialAdmin.cshtml" />
+    <Content Include="Views\Admin\ViewCust.cshtml" />
+    <Content Include="Views\Home\ViewAllPie.cshtml" />
+    <Content Include="Views\Home\ViewByCategory.cshtml" />
+    <Content Include="Views\AddToCart\AddtoCart.cshtml" />
+    <Content Include="Views\AddToCart\CheckOut.cshtml" />
+    <Content Include="Views\AddToCart\PlaceOdr.cshtml" />
+    <Content Include="Views\AddToCart\SendMail.cshtml" />
+    <Content Include="Views\AddToCart\EditAdd.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\RegisterUser\ForgotPassword.cshtml" />
+    <Content Include="Views\RegisterUser\ResetPassword.cshtml" />
+    <Content Include="Views\RegisterUser\VerifyAccount.cshtml" />
+    <Content Include="Views\AddToCart\NotVerify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -302,6 +389,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008281353382_Forign key relation of pie.resx">
       <DependentUpon>202008281353382_Forign key relation of pie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008301054241_Validation in RegisterUser.resx">
+      <DependentUpon>202008301054241_Validation in RegisterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008301204549_Add Admin.resx">
+      <DependentUpon>202008301204549_Add Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008311752098_Add address validation.resx">
+      <DependentUpon>202008311752098_Add address validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031841375_Update Register and pies table.resx">
+      <DependentUpon>202009031841375_Update Register and pies table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009160416337_add IsEmailVerified And activation code.resx">
+      <DependentUpon>202009160416337_add IsEmailVerified And activation code.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

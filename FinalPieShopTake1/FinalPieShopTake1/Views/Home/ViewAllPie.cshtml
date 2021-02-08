@@ -1,0 +1,238 @@
+﻿@model IEnumerable<FinalPieShopTake1.Models.Pies>
+
+@{
+    ViewBag.Title = "ViewAllPie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h2 style="color: mediumpurple;
+        font-family: Bradley Hand">
+        Fruit pies<img src="~/images/pieicon.jpg" title="title" alt="additional title" style="height:50px;width:50px" />
+    </h2>
+</div>
+<div class="row">
+    <div class="card-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.PieCategoryId == 1)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageThumb)" alt="" height="250" width="350">
+
+                        <h3 style="font-family: Bradley Hand">
+                            @Html.ActionLink(item.Name, "Details", "Home", new { id = item.Id }, null)
+                        </h3>
+                        <div class="card-body">
+                            <div class="caption">
+                                <h3 class="pull-right" style="font-family: Bradley Hand">Price:Rs.@item.Price</h3>
+                                <h3 class="btn btn-success">
+                                    @item.Rating
+                                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+                            </h3>
+                            <h3>
+                                <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Id"></a>
+                            </h3>
+                            <p style="font-family: Bradley Hand">@item.SDescription<i class="fa fa-heart  text-danger " aria-hidden="true"></i></p>
+                            </div>
+                            @*<p class="card-text">@item.SDescription</p>
+                                Rs: <p class="card-text"><small class="text-muted">@item.Price</small></p>*@
+                        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+                            <i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = item.Id }, new { @style = "font-family: Bradley Hand; color:white" })
+                        </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+<div>
+    <h2 style="color: mediumpurple;
+        font-family: Bradley Hand">
+        Cheese cakes<img src="~/images/pieicon.jpg" title="title" alt="additional title" style="height:50px;width:50px" />
+    </h2>
+
+</div>
+<div class="row">
+    <div class="card-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.PieCategoryId == 2)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageThumb)" alt="" height="250" width="350">
+
+                        <h3 style="font-family: Bradley Hand">
+                            @Html.ActionLink(item.Name, "Details", "Home", new { id = item.Id }, null)
+                        </h3>
+                        <div class="card-body">
+                            <div class="caption">
+                                <h3 class="pull-right" style="font-family: Bradley Hand">Price:Rs.@item.Price</h3>
+                                <h3 class="btn btn-success">
+                                    @item.Rating
+                                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+                            </h3>
+                            <h3>
+                                <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Id"></a>
+                            </h3>
+                            <p style="font-family: Bradley Hand">@item.SDescription<i class="fa fa-heart  text-danger " aria-hidden="true"></i></p>
+                            </div>
+                            @*<p class="card-text">@item.SDescription</p>
+                                Rs: <p class="card-text"><small class="text-muted">@item.Price</small></p>*@
+                        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+                            <i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = item.Id }, new { @style = "font-family: Bradley Hand; color:white" })
+                        </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+<div>
+    <h2 style="color: mediumpurple;
+        font-family: Bradley Hand">
+        Seasonal pies<img src="~/images/pieicon.jpg" title="title" alt="additional title" style="height:50px;width:50px" />
+    </h2>
+
+</div>
+<div class="row">
+    <div class="card-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.PieCategoryId == 3)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageThumb)" alt="" height="250" width="350">
+
+                        <h3 style="font-family: Bradley Hand">
+                            @Html.ActionLink(item.Name, "Details", "Home", new { id = item.Id }, null)
+                        </h3>
+                        <div class="card-body">
+                            <div class="caption">
+                                <h3 class="pull-right" style="font-family: Bradley Hand">Price:Rs.@item.Price</h3>
+                                <h3 class="btn btn-success">
+                                    @item.Rating
+                                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+                            </h3>
+                            <h3>
+                                <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Id"></a>
+                            </h3>
+                            <p style="font-family: Bradley Hand">@item.SDescription<i class="fa fa-heart  text-danger " aria-hidden="true"></i></p>
+                            </div>
+                            @*<p class="card-text">@item.SDescription</p>
+                                Rs: <p class="card-text"><small class="text-muted">@item.Price</small></p>*@
+                        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+                            <i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = item.Id }, new { @style = "font-family: Bradley Hand; color:white" })
+                        </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+<div>
+    <h2 style="color: mediumpurple;
+        font-family: Bradley Hand">
+        New Collection pies<img src="~/images/pieicon.jpg" title="title" alt="additional title" style="height:50px;width:50px" />
+    </h2>
+
+</div>
+<div class="row">
+    <div class="card-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.PieCategoryId == 4)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageThumb)" alt="" height="250" width="350">
+
+                        <h3 style="font-family: Bradley Hand">
+                            @Html.ActionLink(item.Name, "Details", "Home", new { id = item.Id }, null)
+                        </h3>
+                        <div class="card-body">
+                            <div class="caption">
+                                <h3 class="pull-right" style="font-family: Bradley Hand">Price:Rs. @item.Price</h3>
+                                <h3 class="btn btn-success">
+                                    @item.Rating
+                                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+                            </h3>
+                            <h3>
+                                <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Id"></a>
+                            </h3>
+                            <p style="font-family: Bradley Hand">@item.SDescription<i class="fa fa-heart  text-danger " aria-hidden="true"></i></p>
+                            </div>
+                            @*<p class="card-text">@item.SDescription</p>
+                                Rs: <p class="card-text"><small class="text-muted">@item.Price</small></p>*@
+                        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+                            <i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = item.Id }, new { @style = "font-family: Bradley Hand; color:white" })
+                        </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="card-group">
+
+        @foreach (var item in Model)
+        {
+            if (item.PieCategoryId == 5)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content(item.ImageThumb)" alt="" height="250" width="350">
+
+                        <h3 style="font-family: Bradley Hand">
+                            @Html.ActionLink(item.Name, "Details", "Home", new { id = item.Id }, null)
+                        </h3>
+                        <div class="card-body">
+                            <div class="caption">
+                                <h3 class="pull-right" style="font-family: Bradley Hand">Price:Rs. @item.Price</h3>
+                                <h3 class="btn btn-success">
+                                    @item.Rating
+                                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+                            </h3>
+                            <h3>
+                                <a asp-controller="Pie" asp-action="Details" asp-route-id="@item.Id"></a>
+                            </h3>
+                            <p style="font-family: Bradley Hand">@item.SDescription<i class="fa fa-heart  text-danger " aria-hidden="true"></i></p>
+                            </div>
+                            @*<p class="card-text">@item.SDescription</p>
+                                Rs: <p class="card-text"><small class="text-muted">@item.Price</small></p>*@
+                        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+                            <i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = item.Id }, new { @style = "font-family: Bradley Hand; color:white" })
+                        </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+

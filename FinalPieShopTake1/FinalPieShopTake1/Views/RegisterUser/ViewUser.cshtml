@@ -3,67 +3,102 @@
     ViewBag.Title = "ViewUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Index</h2>
+<h2 style="color:mediumpurple">Your Details</h2>
 
-@using (Html.BeginForm("Save", "RegisterUser"))
+@using (Html.BeginForm("ViewUser", "RegisterUser", FormMethod.Post))
 {
-<div class="form-group">
-        @Html.LabelFor(m => m.FName)
 
-        @Html.TextBoxFor(m => m.FName, new { @class = "form-control" })
 
+    <div>
+
+        <div class="form-group" style="display:inline-block;padding-left:30px">
+
+            @Html.LabelFor(m => m.FName)
+
+
+            @Html.TextBoxFor(m => m.FName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FName, null, new { @class = "text text-danger" })
+
+        </div>
+        <div class="form-group" style="display:inline-block;padding:30px">
+            @Html.LabelFor(m => m.LName)
+
+            @Html.TextBoxFor(m => m.LName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LName, null, new { @class = "text text-danger" })
+
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.LName)
+    <div>
+        <h4 style="color:mediumpurple">Your  Address Details</h4>
+        <div class="form-group" style="display:inline-block;padding:30px">
+            <div style="padding-left:0px">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Address, null, new { @class = "text text-danger" })
 
-        @Html.TextBoxFor(m => m.LName, new { @class = "form-control" })
+            </div>
 
+
+        </div>
+        <div class="form-group" style="display:inline-block;padding:30px;padding-left:5px">
+            @Html.LabelFor(m => m.ZipCode)
+
+            @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ZipCode, null, new { @class = "text text-danger" })
+
+        </div>
+
+        <div class="form-group" style="display:inline-block;padding:0px">
+            @Html.LabelFor(m => m.City)
+
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.City, null, new { @class = "text text-danger" })
+
+        </div>
+        <div class="form-group" style="display:inline-block;padding:30px">
+            @Html.LabelFor(m => m.State)
+
+            @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.State, null, new { @class = "text text-danger" })
+
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Address)
-
-        @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
-
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ZipCode)
-
-        @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control" })
-
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.City)
-
-        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.State)
-
-        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
-
-    </div>
-
-
-    <div class="form-group">
+    <h4 style="color:mediumpurple">Your Account Details</h4>
+    <div class="form-group" style="display:inline-block;padding:30px">
         @Html.LabelFor(m => m.PhoneNo)
 
         @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNo, null, new { @class = "text text-danger" })
 
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:inline-block;padding:0px">
         @Html.LabelFor(m => m.Email)
 
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text text-danger" })
 
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password)
+    @*<div class="form-group" style="display:inline-block;padding:30px">
+            @Html.LabelFor(m => m.Password)
 
-        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text text-danger" })
 
-    </div>
-    @Html.HiddenFor(m=>m.Id)
-    <button type="submit" class="btn btn-outline-success">Edit</button>
+        </div>
+        <div class="form-group" style="display:inline-block;padding:30px">
+            @Html.LabelFor(m => m.ConfirmPassword)
+
+            @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, null, new { @class = "text text-danger" })
+
+        </div>*@
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Password)
+    @Html.HiddenFor(m => m.ConfirmPassword)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Edit</button>
+}
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,0 +1,27 @@
+﻿@model FinalPieShopTake1.Models.PieCategory
+@{
+    ViewBag.Title = "AddPieCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Add Pie Category</h2>
+@using (Html.BeginForm("SaveCategory", "Admin"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CName)
+
+        @Html.TextBoxFor(m => m.CName, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-danger">Cancel</button>
+}

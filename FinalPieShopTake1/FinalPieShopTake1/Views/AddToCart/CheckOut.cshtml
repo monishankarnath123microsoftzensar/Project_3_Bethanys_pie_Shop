@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="padding-top:100px;padding-bottom:100px">
+    @if (TempData["Cart"] != null)
+    {
+
+        <table class="table table-responsive table-condensed">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Bill</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in TempData["Cart"] as List<FinalPieShopTake1.Models.Cart>)
+                {
+                    <tr>
+                        <td>@item.productname</td>
+                        <td>@item.price</td>
+                        <td>@item.qty</td>
+                        <td>@item.bill</td>
+                        <td>
+                            <a class="btn btn-sm" href="@Url.Action("Remove",new { id = @item.productid })"> <i class="fa fa-trash fa-2x text-danger" aria-hidden="true"></i>  </a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td><b>Total Amount:</b> </td>
+                    <td>
+                        @TempData["total"]
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div style="padding-left:530px">
+            @Html.ActionLink("Place Order", "PlaceOdr", "AddToCart", null, new { @class = "btn btn-success" })
+        </div>
+
+
+    }
+    else
+    {
+        <h2 style="color:mediumorchid;text-align:center;padding-bottom:70px"> My Cart Is Empty! <img src="~/images/sad.svg" height=" 40" width="40" /> </h2>
+
+        @Html.ActionLink("Back to Shopping", "Index", "Home", null, new { @style = "color:mediumorchid; font-size:20px;  padding-left:480px;" })<img src="~/images/shopping-bag.svg" height=" 40" width="40" />
+    }
+</div>
+@*@if (TempData["Cart"] != null)
+    {
+        using (Html.BeginForm())
+        {
+            <button type="submit" class="btn btn-success">Place Order</button>
+        }
+    }*@
+
+@*@if (TempData["Cart"] == null)
+{
+    <div style="padding-left:530px">
+        @Html.ActionLink("Place Order", "PlaceOdr", "AddToCart", null, new { @class = "btn btn-success" })
+    </div>
+}*@

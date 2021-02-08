@@ -1,22 +1,35 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
+    var found = User.Identity.GetUserName().IndexOf("@");
+    //.Substring(0, found).ToUpper()
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        @*<ul class="nav navbar-nav navbar-right">*@
+        <ul class="nav navbar-nav navbar-right" style="background-color:darkblue;color:white">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName().Substring(0, found).ToUpper() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Index", "RegisterUser")</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    <ul class="nav navbar-nav navbar-right" style="background-color:darkblue;color:white;padding-top:10px">
+        <li>
+            Welcome Admin Please Login
+
+        </li>
+        @*<li>@Html.ActionLink("RegisterAdmin", "Register", "Account")</li>*@
+
     </ul>
+    @*<ul class="nav navbar-nav navbar-right" style="background-color:plum;">
+            <li style="padding-top:14px"><i class="fa fa-user-plus fa-2x text-success " aria-hidden="true"></i></li>
+            <li>@Html.ActionLink("Register", "Index", "RegisterUser")</li>
+            <li style="padding-top:14px"><i class="fa fa-user-circle fa-2x text-success " aria-hidden="true"></i></li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>*@
 }

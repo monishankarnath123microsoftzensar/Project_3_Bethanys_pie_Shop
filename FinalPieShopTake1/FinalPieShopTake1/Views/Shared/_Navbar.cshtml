@@ -1,6 +1,6 @@
 ﻿
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container" style="padding-left:0px;padding-right:0px">
+<div class="navbar navbar-inverse navbar-fixed-top"style="background-color:orchid;"  >
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
@@ -10,13 +10,14 @@
             @*@Html.ActionLink("Bethhany's Pie" ,"Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 
             <a href="@Url.Action("Index", "Home")">
-                <img src="~/images/bethanylogo.png" height="70" width="70" style="padding-right:3px" />
+                <img src="~/images/dessert.svg" height="70" width="70" style="padding-right:5px" />
             </a>
 
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li style="padding-top:12px"><i class="fa fa-home fa-2x " aria-hidden="true"></i></li>
+        <div class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav" style="background-color: orchid;
+        font-family: Bradley Hand;font-size:22px">
+                <li style="padding-top:12px"><i class="fa fa-home  text-justify" aria-hidden="true"></i></li>
                 <li>
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
@@ -26,22 +27,42 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Pies <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li>
-                            @Html.ActionLink("Cheese Cake", "Index", "Home", null, new { id = "item 1" })
-                        </li>
-                        <li>@Html.ActionLink("Fruit Pies", "Index", "Home", null, new { id = "item 2" })</li>
-                        <li>@Html.ActionLink("Seasonal Pies", "Index", "Home", null, new { id = "item 3" })</li>
-                        <li>@Html.ActionLink("View All Pies", "Index", "Home", null, new { id = "item 3" })</li>
+                        @{
+                            FinalPieShopTake1.Models.ApplicationDbContext _context = new FinalPieShopTake1.Models.ApplicationDbContext();
+                            var catPie = _context.PieCategories.ToList();
+                            foreach (var item in catPie)
+                            {
+                                <li>
+                                    @Html.ActionLink(item.CName, "ViewByCategory", "Home", new { id = item.Id }, null)
+                                </li>
+                            }
+                            @*<li>
+                            @Html.ActionLink("Cheese Cake", "ViewByCategory", "Home", new { id = 2 },null)
+                    </li>
+                    <li>@Html.ActionLink("Fruit Pies", "ViewByCategory", "Home", new { id = 1 }, null)</li>
+                    <li>@Html.ActionLink("Seasonal Pies", "ViewByCategory", "Home", new { id = 3 }, null)</li>*@
 
+                            <li style="border-top:solid 1px">@Html.ActionLink("View All Pies", "ViewAllPie", "Home")</li>
+                        }
                     </ul>
                 </li>
-                <li style="padding-top:12px"><i class="fa fa-cart-plus fa-2x " aria-hidden="true"></i></li>
-                @*<li>@Html.ActionLink(" Pie Cart", "Index","Home")</li>*@
+                <li @*style="padding-top:12px;padding-right:20px;padding-left:20px*@>
+                    <a href="@Url.Action("CheckOut", "AddToCart")">
+                        <img src="~/images/shopping-cart.svg" height=" 40" width="40" />
+                    @if (TempData["Cartcounter"] != null)
+                        {
+                            <span>(</span> @TempData["Cartcounter"] <span>)</span>
+                        }
+                    </a>
+                </li>
+
 
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li style="padding-top:12px"><i class="fa fa-phone-square fa-2x " aria-hidden="true"></i></li>
+                <li style="padding-top:12px"><i class="fa fa-phone-square  text-justify " aria-hidden="true"></i></li>
+                <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                <li style="padding-top:12px"><i class="fa fa-info-circle  text-justify " aria-hidden="true"></i></li>
             </ul>
-            @Html.Partial("_LoginPartial")
+            @Html.Partial("_loginPartialOwn")
         </div>
     </div>
 </div>

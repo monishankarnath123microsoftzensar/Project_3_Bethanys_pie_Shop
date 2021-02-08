@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thank you for Verifying Your Account</h2>
+
+<div class="alert alert-success">
+    <strong>Your Account has been activated successfully</strong>
+
+</div>
+
+<div style="padding-left:530px">
+    @Html.ActionLink("GoTo Login", "Login", "RegisterUser", null, new { @class = "btn btn-success" })
+</div>

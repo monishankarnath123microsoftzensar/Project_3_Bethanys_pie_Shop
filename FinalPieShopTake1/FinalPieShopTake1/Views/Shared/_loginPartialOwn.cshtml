@@ -1,0 +1,43 @@
+﻿@if (Session["Name"] == null)
+{
+    <ul class="nav navbar-nav navbar-right" style="background-color: orchid;
+        font-family: Bradley Hand;
+        font-size: 22px">
+        <li style="padding-top:14px"><i class="fa fa-user-plus   text-justify " aria-hidden="true"></i></li>
+
+        <li>
+
+            @Html.ActionLink("Register", "Index", "RegisterUser", null, null)
+        </li>
+        <li style="padding-top:14px"><i class="fa fa-user-circle  text-justify " aria-hidden="true"></i></li>
+        <li>
+            @Html.ActionLink("Login", "Login", "RegisterUser", null, null)
+        </li>
+
+    </ul>
+}
+else
+{
+<ul class="nav navbar-nav navbar-right" style="background-color: orchid">
+    <li class="dropdown">
+        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">
+            @Html.Label("Hi! " + Session["Name"])<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                @Html.ActionLink("User Details", "ViewUser", "RegisterUser", new { id = Session["UserId"] }, null)
+            </li>
+            @*<li>@Html.ActionLink("Order Details", "ViewByCategory", "Home", null, new { id = 1 })</li>*@
+
+            <li>
+
+                @Html.ActionLink("Logout", "Logout", "RegisterUser", null, null)
+            </li>
+
+        </ul>
+    </li>
+    <li style="padding-top:14px"><i class="fa fa-user-circle fa-2x text-justify " aria-hidden="true"></i></li>
+
+
+</ul>
+}

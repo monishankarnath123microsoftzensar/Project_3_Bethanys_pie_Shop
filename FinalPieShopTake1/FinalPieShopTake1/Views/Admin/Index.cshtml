@@ -1,0 +1,38 @@
+﻿@model FinalPieShopTake1.Models.LoginModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Login</h2>
+
+<fieldset>
+    <legend>
+        User Registration
+    </legend>
+    @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text text-danger" })
+        </div>
+        @Html.AntiForgeryToken()
+        <div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+    }
+</fieldset>
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}

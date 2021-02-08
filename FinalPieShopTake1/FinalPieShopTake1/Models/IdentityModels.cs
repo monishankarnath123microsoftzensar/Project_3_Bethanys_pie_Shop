@@ -23,6 +23,7 @@ namespace FinalPieShopTake1.Models
         public DbSet<PieCategory> PieCategories { get; set; }
         public DbSet<RegisterUser> RegisterUsers { get; set; }
         public DbSet<Pies> Pies { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

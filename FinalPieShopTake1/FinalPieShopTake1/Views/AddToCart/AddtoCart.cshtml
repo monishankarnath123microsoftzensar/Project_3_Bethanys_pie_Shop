@@ -1,0 +1,35 @@
+﻿@model FinalPieShopTake1.Models.Pies
+@{
+    ViewBag.Title = "AddtoCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container" style="padding-top:50px">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <img style="min-height:300px;width:350px;" src="@Url.Content(Model.ImageThumb)" />
+
+            </div>
+
+            <div class="col-lg-6 col-md-9">
+
+                <h1 style="color:mediumpurple">Pie Name :@Model.Name</h1>
+                <h2 style="color: mediumpurple; padding-top: 30px">Price : Rs:@Model.Price</h2>
+                <h3 class="btn btn-success">
+                    @Model.Rating
+                    <i class="fa fa-star" aria-hidden="true" style="color:white"></i></h3>
+                    <h4 style="font-family: Algerian;color: mediumpurple;padding-top:30px">Description  :   @Model.SDescription</h4>
+
+                    <h4 style="padding-top: 30px; padding-bottom: 20px;color: mediumpurple">
+                        Pie Quantity :
+                        <input type="number" name="qty" id="qty" min="1" max="5" required />
+                    </h4>
+                    <button type="submit" class="btn btn-primary" style="background-color:limegreen">Submit</button>
+
+            </div>
+        </div>
+
+    </div>
+}

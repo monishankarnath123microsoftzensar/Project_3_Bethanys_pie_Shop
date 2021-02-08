@@ -1,0 +1,83 @@
+﻿@model FinalPieShopTake1.Models.Pies
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div style="display:inline-block"><img src="@Url.Content(Model.ImageThumb)" height="200" width="200" /></div>
+    <div style="display:inline-block;">
+        <h2 style="font-family: Bradley Hand;color:mediumpurple">@Model.Name</h2>
+        <div style="font-family: Bradley Hand;color:mediumpurple"><h2> Pie Category  :   @Model.PieCategory.CName</h2></div>
+        <div style="font-family: Bradley Hand;color:mediumpurple"><h2>@Model.SDescription</h2></div>
+        <div style="font-family: Bradley Hand;color:mediumpurple"><h2>Rs. @Model.Price</h2></div>
+        <h3 class="btn btn-success"> @Model.Rating<i class="fa fa-star" aria-hidden="true" style="color:white"></i></h3>
+        <div style="display:inline-block; padding-left:800px">@Html.ActionLink("Give Review", "Review", "Home", new { id = Session["UserId"] }, new { @class = "btn btn-info" })</div>
+    </div>
+
+    <div>
+        <div style="font-family: Bradley Hand;color:mediumpurple"><h2>Know More</h2></div>
+        <div style="font-family: Bradley Hand;color:mediumpurple"><h3>@Model.LDescription</h3></div>
+    </div>
+    <div style="font-family: Bradley Hand; display:inline-block">
+        @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-success" })
+        <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+            <i class="fa fa-cart-plus  " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = Model.Id }, new { @style = "font-family: Bradley Hand; color:white;font-size:20px" })
+        </h5>
+    </div>*@
+@*<div style="display:inline-block; padding-left:800px">@Html.ActionLink("Give Review", "Review", "Home", new { id = Session["UserId"] }, new { @class = "btn btn-info" })</div>*@
+
+<div class="container" style="padding-top:50px">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <img style="min-height:300px;width:350px;" src="@Url.Content(Model.ImageThumb)" />
+
+        </div>
+
+        <div class="col-lg-6 col-md-9">
+
+            <h1 style="color:mediumpurple">Pie Name :@Model.Name</h1>
+            <div style="font-family: Bradley Hand;color:mediumpurple"><h2> Pie Category  :   @Model.PieCategory.CName</h2></div>
+            <h4 style="font-family: Algerian;color: mediumpurple;padding-top:30px">Description  :   @Model.SDescription</h4>
+            <h2 style="color: mediumpurple; padding-top: 30px">Price : Rs:@Model.Price</h2>
+            <h3 class="btn btn-success" style="display:inline-block">
+                @Model.Rating
+                <i class="fa fa-star" aria-hidden="true" style="color:white"></i>
+            </h3>
+            @* ........................................................................ *@
+
+            <div class="rating">
+
+                <input type="radio" name="rating" id="r1">
+                <label for="r1"> </label>
+
+                <input type="radio" name="rating" id="r2">
+                <label for="r2"> </label>
+
+                <input type="radio" name="rating" id="r3">
+                <label for="r3"> </label>
+
+                <input type="radio" name="rating" id="r4">
+                <label for="r4"> </label>
+
+                <input type="radio" name="rating" id="r5">
+                <label for="r5"> </label>
+
+            </div>
+          <div style="display:inline-block; padding-top:15px"> @Html.ActionLink("Write Your Review", "Review", "Home", new { id = Session["UserId"] }, new { @class = "btn btn-info" })</div>
+        </div>
+        </div>
+    </div>
+
+
+<div>
+    <div style="font-family: Bradley Hand;color:mediumpurple"><h2>Know More</h2></div>
+    <div style="font-family: Bradley Hand;color:mediumpurple"><h3>@Model.LDescription</h3></div>
+</div>
+<div style="font-family: Bradley Hand; display:inline-block">
+    <h5 class="card-title btn btn-success" style="font-family: Bradley Hand">
+        <i class="fa fa-chevron-left " aria-hidden="true"></i>@Html.ActionLink("Back", "Index", "Home", null, new { @style = "font-family: Bradley Hand; color:white;font-size:20px" })
+    </h5>
+    <h5 class="card-title btn btn-primary" style="font-family: Bradley Hand">
+        <i class="fa fa-cart-plus  " aria-hidden="true"></i>@Html.ActionLink("Add to Cart", "AddtoCart", "AddToCart", new { id = Model.Id }, new { @style = "font-family: Bradley Hand; color:white;font-size:20px" })
+    </h5>
+</div>

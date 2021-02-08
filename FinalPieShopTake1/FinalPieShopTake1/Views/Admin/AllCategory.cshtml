@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FinalPieShopTake1.Models.PieCategory>
+@{
+    ViewBag.Title = "AllCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div style="display:inline-block;margin-top:40px"><h2>Category List</h2></div>
+<div style="float:right;display:inline-block;margin-top:50px">
+
+    @Html.ActionLink("New PieCategory +", "AddPieCategory", "Admin", null, new { @class = "btn btn-success" })
+</div>
+@if (!Model.Any())
+{
+    <p>No Pie found!!!</p>
+    <p>Visit us later</p>
+
+}
+else
+{
+    <table class="table table-bordered table-striped" style="background-color:antiquewhite">
+        <thead>
+            <tr>
+                <th>Name</th>
+
+                <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@Html.ActionLink(item.CName, "Details", "Admin", new { id = item.Id }, null)</td>
+                    <td>@item.Description</td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "EditCategory", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}

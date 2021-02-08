@@ -1,0 +1,65 @@
+﻿@model FinalPieShopTake1.ViewModel.NewPieViewModel
+@{
+    ViewBag.Title = "AddPie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>New Pies</h2>
+@using (Html.BeginForm("SavePie", "Admin"))
+{
+    <div class="form-group" style="font-family:Bradley Hand ">
+        @Html.LabelFor(m => m.Pies.Name)
+
+        @Html.TextBoxFor(m => m.Pies.Name, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group" style="font-family:Bradley Hand ">
+        @Html.LabelFor(m => m.Pies.PieCategoryId)
+        @Html.DropDownListFor(m => m.Pies.PieCategoryId, new SelectList(Model.PieCategories, "Id", "CName"), " ", new { @class = "form-control" })
+    </div>
+    <div class="form-group" style="font-family:Bradley Han">
+        @Html.LabelFor(m => m.Pies.SDescription)
+
+        @Html.TextBoxFor(m => m.Pies.SDescription, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group" style="font-family:Bradley Hand '">
+        @Html.LabelFor(m => m.Pies.LDescription)
+
+        @Html.TextBoxFor(m => m.Pies.LDescription, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group" style="font-family:Bradley Hand ">
+        @Html.LabelFor(m => m.Pies.Price)
+
+        $ @Html.TextBoxFor(m => m.Pies.Price, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group" style="font-family:Bradley Hand ">
+
+        <label> Pie Of The Week: @Html.CheckBoxFor(m => m.Pies.IsPieOfTheWeek)</label>
+
+    </div>
+    <div class="form-group" style="font-family:Bradley Hand ">
+        <label> In Stock: @Html.CheckBoxFor(m => m.Pies.InStock)</label>
+
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pies.Image)
+
+        @Html.TextBoxFor(m => m.Pies.Image, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pies.ImageThumb)
+
+        @Html.TextBoxFor(m => m.Pies.ImageThumb, new { @class = "form-control" })
+
+    </div>
+
+
+    @Html.HiddenFor(m => m.Pies.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="reset" class="btn btn-danger">Cancel</button>
+}

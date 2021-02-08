@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FinalPieShopTake1.Models.RegisterUser>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="display:inline-block;margin-top:40px"><h2>Customer List</h2></div>
+
+@if (!Model.Any())
+{
+    <p>No Customer found!!!</p>
+    <p>Visit us later</p>
+
+}
+else
+{
+    <table class="table table-bordered" style="background-color:whitesmoke">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email ID</th>
+                <th>View Other Details</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.FName</td>
+                <td>@item.LName</td>
+                <td>@item.Address</td>
+                <td>
+                    @item.PhoneNo
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @Html.ActionLink("View", "ViewCust", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+}

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FinalPieShopTake1.Models.Pies>
+@{
+    ViewBag.Title = "AllPie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="display:inline-block;margin-top:40px"><h2>Pie List</h2></div>
+<div style="float:right;display:inline-block;margin-top:50px">
+
+    @Html.ActionLink("New Pie +", "AddPie", "Admin", null, new { @class = "btn btn-success" })
+</div>
+@if (!Model.Any())
+{
+    <p>No Pie found!!!</p>
+    <p>Visit us later</p>
+
+}
+else
+{
+    <table class="table table-bordered" style="background-color:whitesmoke" id="cust-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Pie Name</th>
+                <th>Pie Price</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@Url.Content(item.ImageThumb)" alt="" height="100" width="150"></td>
+
+                    <td>@Html.ActionLink(item.Name, "Details", "Admin", new { id = item.Id }, null)</td>
+                    <td>@item.Price</td>
+                    <td>@item.PieCategory.CName</td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditPie", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td>
+                        <button data-pie-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
+                        @*@Html.ActionLink("Delete", "DeletePie", new { id = item.Id }, new { @class = "btn btn-danger" })*@
+                    </td>
+
+
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+            $('#cust-table').on('click', '.js-delete', function () {
+                let btn = $(this)
+
+                if (confirm("One Pie Deleted SuccessFully!!")) {
+                    $.ajax({
+                        url: '/api/pieapi/' + $(this).attr('data-pie-id'),
+                        method: 'DELETE',
+                        success: function () {
+                            //console.log("Delete Success")
+                            btn.parents('tr').remove()
+                        }
+                    })
+                }
+
+
+            })
+
+        })
+
+    </script>
+}
+@*if (@User.IsInRole("CanManageAll")) {*@
+
+

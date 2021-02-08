@@ -1,0 +1,29 @@
+﻿@model FinalPieShopTake1.Models.Pies
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<img src="@Url.Content(Model.ImageThumb)" alt="" height="100" width="150">
+<div style="padding-top:80px">
+
+    <div style="display:inline-block;padding-left:80px;font-size:40px;color:mediumpurple">@Model.Name</div><div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.Price</div>
+</div>
+<div>
+    <h2>Description</h2>
+    <div style="display:inline-block;font-size:40px;padding-left:80px;color:mediumpurple">@Model.SDescription</div>
+    <div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.SDescription</div>
+    <div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.PieCategory.CName</div>
+    <div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.PieCategory.Description</div>
+
+</div>
+<div>
+    <h2>Other Details</h2>
+    <div style="display:inline-block;padding-left:80px;font-size:40px;color:mediumpurple">@Model.Rating</div>
+    <div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.InStock</div>
+    <div style="display:inline-block;padding-left:20px;font-size:40px;color:mediumpurple">@Model.IsPieOfTheWeek</div>
+
+
+</div>
+

@@ -1,7 +1,67 @@
-﻿
-@{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model FinalPieShopTake1.Models.LoginModel
+@{ ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Log in</h2>
+<h2 style="font-family: Bradley Hand;color:mediumpurple">Login</h2>
+
+<fieldset>
+    <div class="pull-right" style="color:mediumpurple;font-family:'Bradley Hand'">
+        <h1>New User?</h1>
+        <li>
+
+            @Html.ActionLink("Register Here", "Index", "RegisterUser", null, null)
+        </li>
+    </div>
+
+    @*<li class="pull-right">
+
+            @Html.ActionLink("Register Here", "Index", "RegisterUser", null, null)
+        </li>*@
+
+
+    @using (Html.BeginForm("Login", "RegisterUser", FormMethod.Post))
+    {
+        <div class="form-group" style="font-family: Bradley Hand;color:mediumpurple">
+            @Html.LabelFor(m => m.Email)
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text text-danger" })
+
+        </div>
+
+
+
+        @*<ul>
+                <li>
+                    <h4>Forgot Password</h4>
+                </li>
+            </ul>*@
+
+        <div class="form-group" style="font-family: Bradley Hand;color:mediumpurple">
+            @Html.LabelFor(m => m.Password)
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text text-danger" })
+
+        </div>
+
+        <ul>
+            <li style="margin-left:130px;color:cornflowerblue">
+                @*<h5>Forgot Password</h5>*@
+                @Html.ActionLink("Forgot Password", "ForgotPassword", "RegisterUser")
+            </li>
+        </ul>
+
+        @Html.AntiForgeryToken()
+
+
+        <div style="padding-bottom:110px">
+            <button type="submit" class="btn btn-primary" style="font-family: Bradley Hand;color:white">Login</button>
+        </div>
+        @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+    }
+</fieldset>
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -16,6 +16,7 @@ namespace FinalPieShopTake1.Models
         [Display(Name = "Long Description")]
         public string LDescription { get; set; }
         public float Price { get; set; }
+        [Display(Name = "Pie Of The Week")]
         public bool IsPieOfTheWeek { get; set; }
         public bool InStock { get; set; }
         public string Image { get; set; }
@@ -23,6 +24,7 @@ namespace FinalPieShopTake1.Models
         public string ImageThumb { get; set; }
         public PieCategory PieCategory { get; set; }
         public int PieCategoryId { get; set; }
+        public float Rating { get; set; }
 
     }
 }

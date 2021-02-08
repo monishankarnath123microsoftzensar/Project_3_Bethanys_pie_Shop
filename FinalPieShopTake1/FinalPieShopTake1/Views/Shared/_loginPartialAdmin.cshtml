@@ -1,0 +1,22 @@
+﻿@if (Session["Email"] == null)
+{
+    <ul class="nav navbar-nav navbar-right"style="background-color:darkblue;color:white">
+        <li>
+            Welcome Admin Please Login
+        </li>
+
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" style="background-color:darkblue;color:white">
+        <li>
+            @Html.ActionLink("Hi! " + Session["Email"], "Home", "Admin", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Logout", "Logout", "Admin", null, null)
+        </li>
+
+    </ul>
+}
+
